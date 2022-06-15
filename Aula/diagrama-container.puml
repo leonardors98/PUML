@@ -1,0 +1,44 @@
+@startuml C4_Elements
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+!define DEVICONS https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons
+!define DEVICONS2 https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons2
+
+!include DEVICONS/angular.puml
+!include DEVICONS/java.puml
+!include DEVICONS/react.puml
+!include DEVICONS2/spring.puml
+!include DEVICONS2/oracle_original.puml
+
+SHOW_PERSON_OUTLINE()
+LAYOUT_WITH_LEGEND()
+
+Person(cliente, "Personal Banking", "personal banking")
+System_Boundary(internetBanking, "internet bank"){
+    Container(spa, "SPA", "Angular", $sprite="angular")    
+    Container(web, "WEB aplication", "Spring MVC", $sprite="spring")    
+    Container(mobile, "mobile", "React Native", $sprite="react")    
+    Container(api, "API", "java/spring", $sprite="java")    
+
+    ContainerDb(db,"Database", "Oracle", $sprite="oracle_original")
+}
+
+System_Ext(email, "email system", "envia emails")
+System_Ext(bankingSystem, "Sistema do banco", "armazena e trata coisas")
+
+
+
+Rel(cliente, web, "entra site banco")
+Rel(cliente, spa, "views account balance")
+Rel(cliente, mobile, "views account balance")
+Rel(email,cliente, "views account balance")
+Rel(web, spa, "deliveri to custumer web browser")
+Rel(spa,api, "makes api call")
+Rel(mobile,api, "makes api call")
+Rel(api, bankingSystem ,"makes api call")
+Rel(api, db ,"reads from and write")
+Rel(api, email ,"sends email")
+
+
+
+
+@enduml

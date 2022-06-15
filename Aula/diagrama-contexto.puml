@@ -1,0 +1,24 @@
+@startuml C4_Elements
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+!define DEVICONS https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons
+!define DEVICONS2 https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons2
+
+!include DEVICONS/angular.puml
+!include DEVICONS/java.puml
+SHOW_PERSON_OUTLINE()
+
+Person(cliente, "Personal Banking", "personal banking")
+
+System(internetBanking, "internet bank", "cliente ve transacoes bancarias")
+System_Ext(email, "email system", "envia emails")
+System_Ext(bankingSystem, "Sistema do banco", "armazena e trata coisas")
+
+Rel(cliente, internetBanking, "ve saldo e info bancaria")
+Rel(internetBanking,email,"envia emails")
+Rel(email, cliente, "envia email")
+Rel(internetBanking,bankingSystem, "consulta todas informacoes")
+
+
+
+
+@enduml
