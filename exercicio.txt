@@ -1,0 +1,21 @@
+Q1) O modelo C4 é uma técnica de notação gráfica enxuta para modelar a arquitetura de software. Considerando essa definição, ANALISE as seguintes especificações de um sistema de cadastro de currículo:
+ 
+O sistema consiste, em uma aplicação WEB no qual usuários podem cadastrar seus currículos de forma online, permitindo que o RH das empresas, visualize/analise e entre em contato.
+Para esse sistema, temos dois importantes atores: 
+RH da empresa: responsável por analisar currículos e entrar em contato com os interessados; 
+Profissional: responsável por cadastrar e editar as informações existentes em seu currículo no sistema;
+O sistema possui uma arquitetura monolítica e uma comunicação com um serviço externo para envio de mensagens para que o RH consiga entrar em contato, podendo ser um e-mail, sms ou whatapp.
+Considerando essas especificações, MODELE o diagrama de contexto utilizando os conceitos do modelo C4.
+ 
+Q2) Baseando-se do mesmo contexto da questão anterior, ANALISE as seguintes especificações técnicas para o mesmo sistema:
+ 
+O sistema baseia-se em: 
+Uma aplicação WEB para cadastro e análise de currículo sendo uma Single Page Application em Angular;
+Uma API Restful em Spring Boot/JAVA responsável por manter os currículos cadastrados 
+Um banco de dados postgres para armazenar os currículos 
+Um serviço de terceiro para envio de mensagens como e-mail, SMS e Whatsapp.
+A interação entre os contêineres se resume em:
+Aplicação WEB utilizando arquitetura REST com formato JSON para se comunicar com a API. 
+API utilizando JDBC para fazer escrita e leitura no banco de dados. 
+API utilizando arquitetura REST para integrar com serviço de envio de mensagens.
+Considerando essas especificações, MODELE o diagrama de contêiner utilizando os conceitos do modelo C4
